@@ -29,7 +29,10 @@ app.use(express.json({ limit: "5mb" }));
 
 const corsOptions = {
   credentials: true,
-  origin: ["http://localhost:5173"],
+  origin: [
+    "http://localhost:5173",
+    "https://vit-library-mgmt-system.vercel.app"
+  ],
 };
 app.use(cors(corsOptions));
 app.use(express.urlencoded({ extended: false }));
