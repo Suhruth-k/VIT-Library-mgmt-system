@@ -1,227 +1,573 @@
-@import "../../scss/responsive.scss";
-@import "../../scss/variables.scss";
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;700&display=swap");
+// @import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300;400;500;700&display=swap');
+@import "./variables.scss";
+@import "./responsive.scss";
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
 
-/* ################################################## HERO SECTION STYLING ################################################## */
-.hero {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  flex-direction: column;
-  height: calc(100vh - 100px);
-  width: 100%;
+body {
+  font-family: "Poppins", sans-serif;
+  // font-family: 'Roboto', sans-serif;
+
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+}
+
+/* Track */
+::-webkit-scrollbar-track {
+  background: #e0e0e0;
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
+  background: #888;
+}
+
+/* Handle on hover */
+::-webkit-scrollbar-thumb:hover {
+  background: #555;
+}
+
+/* UTILITY CLASSES */
+
+/* ###################### BUTTON  ######################*/
+
+.btn {
+  border: none;
+  outline: none;
+  padding: 12px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 16px;
   color: white;
-  background-position: center;
-  background-size: cover;
-  row-gap: 10px;
+  text-decoration: none;
+  font-weight: 500;
+  text-transform: uppercase;
+}
 
-  h1 {
-    font-size: 30px;
-    padding: 0 10px;
-    line-height: 30px;
-    text-align: center;
+.btn__primary {
+  background-color: $green-accent;
+  color: white;
+  &:hover {
     color: white;
-
-    @include sm {
-      font-size: 16px;
-    }
-
-    @include md {
-      font-size: 18px;
-    }
-
-    @include lg {
-      font-size: 22px;
-    }
-  }
-
-  .subheading {
-    font-size: 18px;
-    text-align: center;
-    padding-bottom: 100px;
-
-    @include lg {
-      font-size: 16;
-    }
-
-    @include md {
-      font-size: 14px;
-    }
-
-    @include sm {
-      font-size: 12px;
-    }
   }
 }
 
-/* HERO BACKGROUND IMAGE FOR LIGHT MODE */
+.btn__danger {
+  background-color: $error-color;
+}
+
+.btn__success {
+  background-color: $success-color;
+}
+
+.btn__warning {
+  background-color: $warning-color;
+}
+
 .light {
-  .hero {
-    background-image: linear-gradient(
-        rgba(242, 240, 240, 0.3),
-        rgba(242, 240, 240, 0.2)
-      ),
-      url("../../assets/hero.jpg");
-  }
-}
-/* HERO BACKGROUND IMAGE FOR DARK MODE */
-.dark {
-  .hero {
-    background-image: linear-gradient(
-        rgba(31, 42, 64, 0.8),
-        rgba(31, 42, 64, 0.8)
-      ),
-      url("../../assets/hero.jpg");
+  .btn__secondary {
+    background-color: $light-blue-accent;
+
+    &:hover {
+      color: white;
+    }
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
   }
 }
 
-/*##################################################  WELCOME SECTION STYLING ################################################## */
-.welcome {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  column-gap: 50px;
-  padding: 100px 50px;
-  @include md {
-    flex-direction: column;
-    width: 100%;
-    padding: 50px 20px;
+.dark {
+  .btn__secondary {
+    background-color: $dark-blue-accent;
+
+    &:hover {
+      color: white;
+    }
+
+    &:disabled {
+      cursor: not-allowed;
+      opacity: 0.5;
+    }
   }
-  .left {
+}
+
+/* ###################### FORM STYLING  ######################*/
+
+/* INPUT STYLING  */
+.form-control {
+  display: flex;
+  flex-direction: column;
+  margin: 5px 0;
+  input,
+  textarea,
+  select {
+    padding: 10px;
+    outline: none;
+    border: 2px solid transparent;
+    border-radius: 3px;
+    font-family: "Poppins", sans-serif;
+    &:focus {
+      border: 2px solid $green-accent;
+    }
+    &:disabled{
+      border: 2px solid $green-accent;
+    }
+  }
+  span {
+    color: red;
+  }
+}
+
+.light {
+  input {
+    color: $light-text-color;
+    background-color: $light-background-accent;
+  }
+}
+
+.dark {
+  input {
+    color: $dark-text-color;
+    background-color: $dark-background-accent;
+  }
+}
+
+.heading {
+  h1 {
+    position: relative;
+    padding-bottom: 5px;
+    text-transform: uppercase;
+    font-weight: 500;
+    &:before {
+      width: 28px;
+      height: 5px;
+      display: block;
+      content: "";
+      position: absolute;
+      bottom: 3px;
+      left: 50%;
+      margin-left: -14px;
+      background-color: $green-accent;
+    }
+
+    &:after {
+      width: 100px;
+      height: 1px;
+      display: block;
+      content: "";
+      position: relative;
+      margin-top: 10px;
+      left: 50%;
+      margin-left: -50px;
+      background-color: $green-accent;
+    }
+  }
+}
+
+.auth__card__wrapper {
+  height: 100vh;
+  width: 100vw;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  .auth__card__container {
+    width: 500px;
+    max-width: 90%;
     h1 {
-      
-      margin-bottom: 6px;
-    width: 244px;
-      @include md {
-        text-align: center;
-        margin: 0 auto;
-      }
+      text-align: center;
     }
     p {
-      text-align: justify;
-      line-height: 1.8rem;
-      margin-bottom: 20px;
+      text-align: center;
+      margin-bottom: 15px;
     }
-    .btn__read__more{
-        @include md{
-            text-align: center;
-        }
+
+    form {
+      display: flex;
+      flex-direction: column;
+      row-gap: 25px;
+
+      .password__input {
+        position: relative;
+      }
+      .show__password__icon {
+        position: absolute;
+        top: 35px;
+        right: 20px;
+        cursor: pointer;
+      }
+    }
+
+    .email__icon__box {
+      font-size: 34px;
+      text-align: center;
+      width: 100px;
+      height: 100px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: 50%;
+      margin: 10px auto;
     }
   }
-  .right {
-    width: 100%;
-    img {
-      width: 350px;
-      height: 350px;
-      border-radius: 5px;
+}
 
-      @include lg {
-        width: 250px;
-        height: 250px;
+.badge {
+  padding: 3px 4px;
+  border-radius: 4px;
+  font-size: 14px;
+  color: white;
+  display: flex;
+  justify-content: center;
+  width: 100px;
+}
+
+.badge__sm{
+  width: 50px;
+}
+
+.badge__success {
+  background-color: $success-color;
+}
+
+.badge__warning {
+  background-color: $warning-color;
+}
+
+.badge__danger {
+  background-color: $error-color;
+}
+
+.loader {
+  border: 2px solid #ffffff;
+  border-radius: 50%;
+  width: 18px;
+  height: 18px;
+  animation: spin 2s linear infinite;
+  text-align: center;
+  margin: auto;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.dashboard__layout {
+  display: flex;
+  width: 100%;
+
+  .container {
+    width: 100%;
+  }
+}
+
+.table__wrapper {
+  padding: 20px;
+  border-radius: 5px;
+  margin: 20px 0;
+  overflow: auto;
+  table {
+    width: 100%;
+    border: none;
+
+    @include lg{
+      font-size: 12px;
+    }
+
+    @include md {
+      font-size: 13px;
+    }
+
+    @include sm {
+      font-size: 11px;
+    }
+
+    thead {
+      color: white;
+    }
+
+    tr,
+    td {
+      padding: 13px;
+      // border: none;
+
+      .avatar {
+        width: 80px;
+        height: 80px;
+        object-fit: cover;
+        border-radius: 50%;
+        overflow: hidden;
+      }
+
+      .actions{
+          width: 180px;
+      }
+    }
+  }
+}
+
+.dark {
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #101624;
+      }
+
+      &:hover {
+        background-color: #0c101b;
+      }
+    }
+  }
+}
+
+.light {
+  tbody {
+    tr {
+      &:nth-child(even) {
+        background-color: #ebe6e6;
+      }
+
+      &:hover {
+        background-color: #e2e2e2;
+      }
+    }
+  }
+}
+
+/* MANAGE SECTION  */
+
+.manage__section {
+  .header {
+    display: flex;
+    justify-content: space-between;
+    padding: 15px;
+
+    @include md {
+      flex-direction: column;
+    }
+
+    h2 {
+      font-weight: 500;
+      text-transform: uppercase;
+    }
+
+    button {
+      margin: 0 5px;
+
+      @include md {
+        margin: 5px 0;
+        margin-right: 6px;
+      }
+    }
+  }
+
+  .filter {
+    display: flex;
+    justify-content: space-around;
+    padding: 10px;
+    column-gap: 20px;
+
+    @include md {
+      flex-direction: column;
+      row-gap: 20px;
+    }
+
+    input,select{
+      outline: none;
+      border: 2px solid transparent;
+      border-radius: 3px;
+      padding: 8px 10px;
+      width: 100%;
+
+      &:focus {
+        border: 2px solid $green-accent;
+      }
+    }
+  }
+
+  .table__wrapper {
+    padding: 10px;
+    table {
+      width: 100%;
+      min-width: 800px;
+      border: none;
+
+      @include lg{
+        font-size: 12px;
       }
 
       @include md {
-        width: 100%;
-        margin-top: 35px;
+        font-size: 13px;
+      }
+  
+      @include sm {
+        font-size: 11px;
+      }
+
+
+      thead {
+        color: white;
+      }
+
+      tr,
+      td {
+        padding: 13px;
+        // border: none;
+
+        button {
+          margin: 0 5px;
+        }
+      }
+
+    }
+  }
+
+  .pagination {
+    display: flex;
+    justify-content: space-between;
+    padding: 10px;
+
+    @include md {
+      flex-direction: column;
+    }
+
+    div {
+      display: flex;
+      align-items: center;
+      column-gap: 10px;
+
+      @include md {
+        flex-direction: row;
+        justify-content: flex-start;
       }
     }
   }
 }
 
-/*##################################################  POPULAR BOOKS SECTION STYLING ################################################## */
-
-.popular__books {
-  padding: 20px 50px;
-
-  @include md{
-    padding: 20px 20px;
-  }
-  h1 {
-    text-align: center;
-    margin-bottom: 50px;
-  }
-
-  .card__wrapper {
-    display: grid;
-    grid-template-columns: repeat(4,1fr);
-    grid-gap: 30px;
-
-    @include lg{
-        grid-template-columns: repeat(2,1fr);
+.light {
+  a {
+    &:hover {
+      color: $light-text-color;
     }
+  }
+}
 
-    @include sm{
-        grid-template-columns: repeat(1,1fr);
+.dark {
+  a {
+    &:hover{
+      color: $dark-text-color;
     }
+  }
+}
+
+.star{
+  color: #FFD700;
+  font-size: 20px;
+  margin-left: 1px;
+}
 
 
-    .card{
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        border-radius: 4px;
-        transition: $default-transition;
 
-        &:hover{
-            background-color: $green-accent;
+
+
+.form {
+  padding: 10px;
+  span {
+    font-size: 14px;
+  }
+  .card {
+    margin-top: 3px;
+    padding: 20px;
+    border-radius: 3px;
+    display: flex;
+
+    form {
+        width: 100%;
+      .input__container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+        width: 100%;
+
+        @include sm {
+          grid-template-columns: 1fr;
+        }
+      }
+
+      .input__container__3 {
+        display: grid;
+        grid-template-columns: 1fr 1fr 1fr;
+        gap: 20px;
+        width: 100%;
+
+        @include sm {
+          grid-template-columns: 1fr;
         }
         
-        padding: 20px;
-        img{
-            height: 300px;
-            width: 100%;
-        }
-
-        .content{
-            margin: 20px 0;
-
-            .action{
-                margin-top: 20px;
-                text-align: center;
-            }
-        }
-    }
-
-  }
-  .button{
-    text-align: center;
-    margin: 50px 0;
-}
-
-
-}
-
-
-/*##################################################  COUNTER SECTION STYLING ################################################## */
-
-
-.counter__section{
-    background-position: center;
-    background-size: cover;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
-    padding: 50px;
-    margin: 40px 0;
-
-    @include md{
-        flex-direction: column;
-        row-gap: 40px;
-    }
-    div{
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      row-gap: 20px;
-
-
-      .icon{
-        font-size: 40px;
       }
+      .actions{
+        margin-top: 20px;
+        width: 97.5%;
+        display: flex;
+        justify-content: end;
+        column-gap: 14px;
 
-      p{
-        font-size: 20px;
-        font-weight: bold;
+        @include md{
+            width: 95%;
+        }
       }
     }
   }
+}
+
+
+.datalist__wrapper{
+  min-height: calc(100vh - 100px);
+  padding: 20px;
+
+  h2{
+      font-weight: 500;
+      font-size: 22px;
+      text-transform: uppercase;
+  }
+  span{
+      font-size: 13px;
+  }
+}
+
+.manage__clearance{
+  .card__section{
+    padding: 20px;
+    h2{
+      font-weight: 500;
+      text-transform: uppercase;
+      margin-bottom: 10px;
+    }
+    .card__wrapper{
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 20px;
+      text-transform: uppercase;
+      a{
+        display: none;
+      }
+  
+      @include sm{
+          grid-template-columns: repeat(1,1fr);
+      }
+  }
+  }
+
+}
