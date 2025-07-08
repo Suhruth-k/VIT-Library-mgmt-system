@@ -19,7 +19,6 @@
     padding: 0 10px;
     line-height: 30px;
     text-align: center;
-    padding-bottom: 20px;
 
     @include sm {
       font-size: 16px;
@@ -37,7 +36,7 @@
   .subheading {
     font-size: 18px;
     text-align: center;
-    padding-bottom: 50px;
+    padding-bottom: 80px;
 
     @include lg {
       font-size: 16;
