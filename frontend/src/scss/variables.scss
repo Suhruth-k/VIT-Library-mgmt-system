@@ -1,22 +1,49 @@
-/* DARK THEME COLOR  */
-$dark-background-accent : #1f2A40;
-$dark-blue-accent : #3e4396;
-$dark-blue-hover :#535ac8 ;
-$dark-text-color : #e0e0e0;
-$dark-background : #141b2d;
+/* ===================== */
+/* FUNKY COLOR THEME 2023 */
+/* ===================== */
 
-/* LIGH THEME COLOR */
-$light-background-accent : #f2f0f0;
-$light-blue-accent : #94a9fc;
-$light-blue-hover : #6870fa ;
-$light-text-color : #141414;
+/* DARK THEME COLORS */
+$dark-background-accent: #1e1b4b;       // Deep cosmic purple
+$dark-blue-accent: #7c3aed;             // Electric purple
+$dark-blue-hover: #8b5cf6;              // Lighter electric purple
+$dark-text-color: #e9d5ff;              // Soft lavender
+$dark-background: #0f0c29;              // Midnight navy
 
-/* COMMON COLOR */
-$green-accent : #4cceac;
+/* LIGHT THEME COLORS */
+$light-background-accent: #faf5ff;      // Very light lavender
+$light-blue-accent: #a78bfa;            // Soft purple
+$light-blue-hover: #8b5cf6;             // Bright purple
+$light-text-color: #312e81;             // Deep indigo
 
-$error-color: #FF5A5F;
-$success-color: #28A745;
-$warning-color: #FFA500;
+/* ACCENT COLORS */
+$green-accent: #10b981;                 // Vibrant emerald (updated from teal)
+$error-color: #ef4444;                  // Bright red
+$success-color: #10b981;                // Matching emerald
+$warning-color: #f59e0b;                // Amber yellow
 
+/* SPECIAL FUNKY COLORS */
+$funky-accent-1: #ec4899;               // Hot pink
+$funky-accent-2: #fbbf24;               // Sunshine yellow
+$funky-gradient: linear-gradient(135deg, #7c3aed, #ec4899); // Purple to pink
 
-$default-transition : all 0.5s ease-in-out;
+/* TRANSITIONS */
+$default-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+$funky-transition: all 0.5s cubic-bezier(0.68, -0.6, 0.32, 1.6);
+
+/* SHADOWS */
+$soft-shadow: 0 4px 6px -1px rgba(124, 58, 237, 0.1);
+$hard-shadow: 0 10px 15px -3px rgba(124, 58, 237, 0.3);
+
+/* BORDERS */
+$funky-border: 2px dashed #a78bfa;
+$solid-border: 1px solid #ddd6fe;
+
+/* BREAKPOINTS */
+$mobile-breakpoint: 640px;
+$tablet-breakpoint: 768px;
+$desktop-breakpoint: 1024px;
+
+/* Z-INDEX */
+$z-modal: 1000;
+$z-tooltip: 500;
+$z-nav: 100;
