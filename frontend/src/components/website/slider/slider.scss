@@ -1,77 +1,215 @@
 @import "../../../scss/responsive.scss";
 @import "../../../scss/variables.scss";
 
-
 .book__slider {
-    // background-color: $background-color;
-    margin: 0px 10px;
-    .container {
-      width: 80%;
-      margin: 0 auto;
-      padding: 30px 0;
+  margin: 0 1rem;
+  padding: 2rem 0;
+  background: linear-gradient(135deg, rgba($funky-accent-1, 0.05), rgba($funky-accent-2, 0.05));
+  border-radius: 1rem;
+  position: relative;
+  overflow: hidden;
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, 
+      rgba(white, 0.8) 0%, 
+      rgba(white, 0) 10%, 
+      rgba(white, 0) 90%, 
+      rgba(white, 0.8) 100%);
+    pointer-events: none;
+    z-index: 1;
+  }
+
+  .container {
+    width: 90%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 2rem 0;
+    position: relative;
+
+    .heading {
+      margin-bottom: 2rem;
       position: relative;
-    //   background-color: red;
-      text-align: center;
-
-      .heading{
-        margin-bottom: 40px;
-      }
       
-      .book__card {
-        max-width: 300px;
-        // background-color: white;
-        border-radius: 3px;
-        // margin-left: 6px;
-        margin-bottom: 10px;
-        @include lg{
-          max-width: 250px;
-        }
-        img {
-          width: 100%;
-          height: 200px;
-          object-fit: fill;
-          border-radius: 3px;
-        }
-        .body{
-            padding: 15px 10px;
-            width: 100%;
-            padding-top: 5px;
-            text-align: center;
+      h2 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 2rem;
+        background: linear-gradient(135deg, $funky-accent-1, $funky-accent-2);
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
+        display: inline-block;
+      }
 
-            h3{
-                margin-bottom: 3px;
-            }
-            p{
-                margin-bottom: 3px;
-            }
+      &::after {
+        content: '';
+        position: absolute;
+        bottom: -0.5rem;
+        left: 50%;
+        transform: translateX(-50%);
+        width: 80px;
+        height: 4px;
+        background: linear-gradient(135deg, $funky-accent-1, $funky-accent-2);
+        border-radius: 2px;
+      }
+    }
+    
+    .book__card {
+      max-width: 280px;
+      margin: 0 1rem;
+      border-radius: 12px;
+      overflow: hidden;
+      transition: all 0.4s cubic-bezier(0.25, 0.8, 0.25, 1);
+      background: white;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+      border: 1px solid rgba($funky-accent-1, 0.2);
 
-            .action{
-                margin: 40px 20px;
-            }
+      &:hover {
+        transform: translateY(-10px) scale(1.03);
+        box-shadow: 0 10px 25px rgba($funky-accent-1, 0.2);
+      }
+
+      @include lg {
+        max-width: 240px;
+      }
+
+      img {
+        width: 100%;
+        height: 220px;
+        object-fit: cover;
+        border-bottom: 3px solid $funky-accent-1;
+        transition: all 0.3s ease;
+      }
+
+      &:hover img {
+        transform: scale(1.05);
+      }
+
+      .body {
+        padding: 1.5rem 1rem;
+        text-align: center;
+
+        h3 {
+          font-size: 1.1rem;
+          margin-bottom: 0.5rem;
+          color: $light-text-color; /* Changed from $dark-text-color */
+          font-weight: 600;
+        }
+
+        p {
+          color: $light-text-color; /* Changed from undefined $text-light */
+          margin-bottom: 0.5rem;
+          font-size: 0.9rem;
+          opacity: 0.8;
+        }
+
+        .action {
+          margin: 1.5rem 0 0.5rem;
         }
       }
-      .btn__circle{
-         width: 30px;
-         height: 30px;
-         background-color: $green-accent;
-         color: white;
-         outline: none;
-         border: none;
-         border-radius: 50%;
-         position: absolute;
-         cursor: pointer;
-         top: 55%;
-         z-index: 111;
+    }
+
+    .btn__circle {
+      width: 50px;
+      height: 50px;
+      background: linear-gradient(135deg, $funky-accent-1, $funky-accent-2);
+      color: white;
+      outline: none;
+      border: none;
+      border-radius: 50%;
+      position: absolute;
+      cursor: pointer;
+      top: 50%;
+      transform: translateY(-50%);
+      z-index: 10;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+      box-shadow: 0 4px 10px rgba($funky-accent-1, 0.3);
+
+      &:hover {
+        transform: translateY(-50%) scale(1.1);
+        box-shadow: 0 6px 15px rgba($funky-accent-1, 0.4);
       }
-      .btn__next{
-        right: -35px;
+
+      &:active {
+        transform: translateY(-50%) scale(0.95);
       }
-      .btn__prev{
-        left: -35px;
+    }
+
+    .btn__next {
+      right: -25px;
+    }
+
+    .btn__prev {
+      left: -25px;
+    }
+  }
+}
+
+.slick-arrow {
+  display: none !important;
+}
+
+/* Funky dots customization */
+.slick-dots {
+  bottom: -40px !important;
+
+  li {
+    button {
+      &::before {
+        color: $funky-accent-1 !important;
+        font-size: 10px !important;
+        opacity: 0.5 !important;
+      }
+    }
+
+    &.slick-active {
+      button {
+        &::before {
+          color: $funky-accent-2 !important;
+          opacity: 1 !important;
+          transform: scale(1.5);
+        }
       }
     }
   }
+}
 
-  .slick-arrow{
-    display: none;
+/* Dark mode adjustments */
+.dark {
+  .book__slider {
+    background: linear-gradient(135deg, rgba($dark-blue-accent, 0.1), rgba($funky-accent-1, 0.1));
+
+    &::before {
+      background: linear-gradient(90deg, 
+        rgba($dark-background, 0.8) 0%, 
+        rgba($dark-background, 0) 10%, 
+        rgba($dark-background, 0) 90%, 
+        rgba($dark-background, 0.8) 100%);
+    }
+
+    .book__card {
+      background: $dark-background-accent;
+      border-color: rgba($funky-accent-2, 0.3);
+
+      .body {
+        h3 {
+          color: $dark-text-color;
+        }
+
+        p {
+          color: $dark-text-color;
+          opacity: 0.8;
+        }
+      }
+    }
   }
+}
