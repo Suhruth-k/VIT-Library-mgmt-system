@@ -2,23 +2,44 @@
 @import "../../../scss/variables.scss";
 
 header {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  backdrop-filter: blur(10px);
+  background: rgba(white, 0.8);
+  border-bottom: 2px dashed $funky-accent-1;
+  box-shadow: $soft-shadow;
+
+  .dark & {
+    background: rgba($dark-background, 0.9);
+    border-bottom-color: $funky-accent-2;
+  }
+
   .topbar {
     display: flex;
     justify-content: space-between;
-    padding: 3px 15px;
+    padding: 0.5rem 2rem;
+    background: $funky-gradient;
+    color: white;
+    font-size: 0.9rem;
 
     @include md {
       justify-content: center;
-      font-size: 14px;
+      padding: 0.5rem;
     }
 
     div {
       display: flex;
       align-items: center;
-      column-gap: 8px;
+      gap: 1rem;
 
       @include md {
         display: none;
+      }
+
+      .icon {
+        font-size: 1.2rem;
+        animation: funky-spin 5s linear infinite;
       }
     }
   }
@@ -26,33 +47,71 @@ header {
   nav {
     display: flex;
     justify-content: space-between;
-    padding: 10px 15px;
     align-items: center;
+    padding: 1rem 2rem;
+    max-width: 1400px;
+    margin: 0 auto;
 
     .logo {
       display: flex;
       align-items: center;
-      column-gap: 6px;
+      gap: 0.75rem;
+      transition: $funky-transition;
+
+      &:hover {
+        transform: scale(1.05);
+      }
 
       .logo__icon {
-        font-size: 40px;
+        font-size: 2.5rem;
+        color: $funky-accent-1;
       }
+
       span {
-        font-size: 20px;
-        font-weight: bold;
+        font-size: 1.5rem;
+        font-weight: 700;
+        font-family: 'Space Grotesk', sans-serif;
+        background: $funky-gradient;
+        -webkit-background-clip: text;
+        background-clip: text;
+        color: transparent;
       }
     }
 
     .center {
       display: flex;
-      column-gap: 16px;
+      gap: 2rem;
+
       a {
         transition: $default-transition;
         text-decoration: none;
+        font-weight: 500;
+        position: relative;
+        padding: 0.5rem 0;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: 0;
+          left: 0;
+          width: 0;
+          height: 2px;
+          background: $funky-gradient;
+          transition: $default-transition;
+        }
+
+        &:hover::after {
+          width: 100%;
+        }
       }
 
       .active {
-        color: $green-accent;
+        color: $funky-accent-1;
+        font-weight: 600;
+
+        &::after {
+          width: 100%;
+        }
       }
 
       @include md {
@@ -63,73 +122,99 @@ header {
     .profile {
       display: flex;
       align-items: center;
-      column-gap: 3px;
+      gap: 0.5rem;
       cursor: pointer;
       position: relative;
+      transition: $default-transition;
+
+      &:hover {
+        transform: translateY(-2px);
+      }
+
       img {
-        width: 40px;
-        height: 40px;
+        width: 2.5rem;
+        height: 2.5rem;
         border-radius: 50%;
+        border: 2px solid $funky-accent-1;
+        transition: $default-transition;
+
+        &:hover {
+          border-color: $funky-accent-2;
+        }
 
         @include md {
-          width: 30px;
-          height: 30px;
+          width: 2rem;
+          height: 2rem;
         }
       }
+
       span {
-        font-size: 15px;
-        margin-left: 3px;
+        font-size: 0.95rem;
+        font-weight: 500;
 
         @include md {
-          font-size: 13px;
+          font-size: 0.85rem;
         }
       }
 
       // dropdown
       .dropdown__wrapper {
-        max-height: 0px;
+        max-height: 0;
         overflow: hidden;
         position: absolute;
-        top: 60px;
-        right: 15px;
-        border-radius: 3px;
+        top: 3.5rem;
+        right: 0;
+        border-radius: 0.5rem;
         transition: $default-transition;
+        background: white;
+        box-shadow: $hard-shadow;
+        width: 12rem;
+        z-index: 10;
+
+        .dark & {
+          background: $dark-background-accent; /* Changed from $dark-card to $dark-background-accent */
+        }
 
         .dropdown__content {
-          // padding: 10px;
-          margin: 10px 0;
-          width: 200px;
+          padding: 0.5rem 0;
           display: flex;
           flex-direction: column;
 
           .dropdown__item {
             display: flex;
             align-items: center;
-            column-gap: 13px;
-            margin: 2px 0;
+            gap: 0.75rem;
+            padding: 0.75rem 1rem;
             text-decoration: none;
-            padding: 6px 5px;
-            .icon {
-              margin-left: 10px;
+            transition: $default-transition;
+
+            &:hover {
+              background: rgba($funky-accent-1, 0.1);
+              padding-left: 1.25rem;
             }
+
+            .icon {
+              font-size: 1.25rem;
+              color: $funky-accent-1;
+            }
+
             span {
-              font-size: 15px;
+              font-size: 0.9rem;
             }
           }
         }
       }
 
       .dropdown__wrapper__active {
-        max-height: 140px;
-        overflow: hidden;
-        position: absolute;
+        max-height: 20rem;
+        border: 1px solid $funky-border;
       }
     }
 
     .right {
       display: flex;
       align-items: center;
-      column-gap: 20px;
+      gap: 1.5rem;
 
       @include md {
         display: none;
@@ -138,8 +223,16 @@ header {
 
     .mobile__right {
       display: none;
+      
       @include md {
-        display: block;
+        display: flex;
+        align-items: center;
+        gap: 1rem;
+      }
+
+      .btn__icon {
+        font-size: 1.5rem;
+        color: $funky-accent-1;
       }
     }
 
@@ -155,47 +248,71 @@ header {
       align-items: center;
       justify-content: center;
       transition: $default-transition;
-      z-index: 111;
+      z-index: 1000;
+      background: rgba($dark-background, 0.95);
+      backdrop-filter: blur(10px);
 
       @include md {
         display: flex;
       }
+
       nav {
         display: flex;
         flex-direction: column;
-        justify-content: center;
+        align-items: center;
+        gap: 2rem;
 
         a {
           text-decoration: none;
-          margin-bottom: 20px;
+          font-size: 1.5rem;
+          font-weight: 500;
+          color: white;
+          position: relative;
+          padding: 0.5rem 1rem;
+          transition: $default-transition;
+
+          &::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 3px;
+            background: $funky-gradient;
+            transition: $default-transition;
+          }
+
+          &:hover {
+            color: $funky-accent-2;
+
+            &::after {
+              width: 100%;
+            }
+          }
+
+          &.active {
+            color: $funky-accent-1;
+            font-weight: 600;
+
+            &::after {
+              width: 100%;
+            }
+          }
         }
       }
     }
 
     .btn__close {
       position: absolute;
-      top: 15px;
-      right: 15px;
-
-      .icon {
-        font-size: 25px;
-      }
-    }
-
-    .btn__icon {
-      outline: none;
-      border: none;
-      font-size: 20px;
-      cursor: pointer;
-      width: 40px;
-      height: 40px;
-      border-radius: 50%;
+      top: 2rem;
+      right: 2rem;
+      color: white;
+      font-size: 2rem;
       transition: $default-transition;
-      background-color: transparent;
 
       &:hover {
-        background-color: $green-accent;
-        color: white;
+        color: $funky-accent-1;
+        transform: rotate(90deg);
       }
     }
 
@@ -205,20 +322,29 @@ header {
   }
 }
 
-/* HOVER COLOR */
-
+/* HOVER COLORS */
 .light {
   a {
+    color: $light-text-color;
+
     &:hover {
-      color: $light-blue-accent;
+      color: $funky-accent-1;
     }
   }
 }
 
 .dark {
   a {
+    color: $dark-text-color;
+
     &:hover {
-      color: $dark-blue-accent;
+      color: $funky-accent-2;
     }
   }
+}
+
+/* ANIMATIONS */
+@keyframes funky-spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
 }
