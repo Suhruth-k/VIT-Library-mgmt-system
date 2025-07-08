@@ -1,18 +1,9 @@
 import "./appbar.scss";
 import { GiBookAura } from "react-icons/gi";
-import {
-  AiOutlineMenu,
-} from "react-icons/ai";
-import {FaRegMoon} from 'react-icons/fa';
-import { useDispatch, useSelector } from "react-redux";
-import { FiSun } from "react-icons/fi";
-import { toggleTheme } from "../../../store/slices/themeSlice";
+import { AiOutlineMenu } from "react-icons/ai";
 import { Link } from "react-router-dom";
+
 function AppBar({ open, setOpen }) {
- 
-  const dispatch = useDispatch();
-  const { theme } = useSelector((state) => state.theme);
- 
   return (
     <div className="appbar bg__accent ">
       <div className="left">
@@ -32,18 +23,8 @@ function AppBar({ open, setOpen }) {
         </Link>
       </div>
 
-      {/* righside icons and profile */}
-      <div className="right">
-
-      <button
-            className="btn__icon text__color "
-            onClick={() => {
-              dispatch(toggleTheme());
-            }}
-          >
-            {theme === "dark" ? <FaRegMoon /> : <FiSun />}
-          </button>
-      </div>
+      {/* right side - toggle button removed */}
+      <div className="right"></div>
     </div>
   );
 }
