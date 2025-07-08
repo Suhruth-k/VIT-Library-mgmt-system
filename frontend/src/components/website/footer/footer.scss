@@ -1,61 +1,146 @@
+@import "../../../scss/variables.scss";
 @import "../../../scss/responsive.scss";
 
-footer{
-    .top{
-        display: grid;
-        grid-template-columns: repeat(4,1fr);
-        padding: 50px;
-        gap: 40px;
-    
-        @include md{
-            grid-template-columns: repeat(2,1fr);
-        }
-    
-        @include sm{
-            grid-template-columns: repeat(1,1fr);
-        }
-    
-    
-        .box1{
-            .logo{
-                display: flex;
-                align-items: center;
-                column-gap: 7px;
-                .icon{
-                    font-size: 30px;
-                }
-                
-            }
-            p{
-                text-align: justify;
-            }
-        }
-    
-        .box2,.box3,.box4{
-            display: flex;
-            flex-direction: column;
-            row-gap: 10px;
-            a{
-                text-decoration: none;
-    
-            }
-    
-            .item{
-                display: flex;
-                column-gap: 10px;
-                align-items: center;
-    
-                .icon{
-                    font-size: 25px;
-                }
-                .icon__home{
-                    font-size: 35px;
-                }
-            }
-        }
+footer {
+  background: linear-gradient(135deg, rgba($dark-blue-accent, 0.1), rgba($funky-accent-1, 0.1));
+  backdrop-filter: blur(10px);
+  border-top: $funky-border;
+  margin-top: 3rem;
+
+  .top {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    padding: 4rem 2rem;
+    gap: 3rem;
+    max-width: 1400px;
+    margin: 0 auto;
+
+    @include md {
+      grid-template-columns: repeat(2, 1fr);
+      padding: 3rem 1.5rem;
     }
-    .bottom{
-        text-align: center;
-        padding-bottom: 14px;
+
+    @include sm {
+      grid-template-columns: 1fr;
+      padding: 2rem 1rem;
+      gap: 2rem;
     }
+
+    .box1 {
+      .logo {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        margin-bottom: 1.5rem;
+        
+        .icon {
+          font-size: 2.5rem;
+          color: $funky-accent-1;
+          animation: funky-pulse 2s infinite;
+        }
+
+        .logo-text {
+          font-family: 'Space Grotesk', sans-serif;
+          font-size: 1.5rem;
+          font-weight: 700;
+          background: $funky-gradient;
+          -webkit-background-clip: text;
+          background-clip: text;
+          color: transparent;
+        }
+      }
+
+      p {
+        text-align: justify;
+        line-height: 1.7;
+        color: $light-text-color;
+      }
+    }
+
+    .box2, .box3, .box4 {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+
+      h3 {
+        font-family: 'Space Grotesk', sans-serif;
+        font-size: 1.25rem;
+        margin-bottom: 0.5rem;
+        color: $dark-blue-accent;
+        position: relative;
+        display: inline-block;
+
+        &::after {
+          content: '';
+          position: absolute;
+          bottom: -5px;
+          left: 0;
+          width: 40px;
+          height: 3px;
+          background: $funky-gradient;
+          border-radius: 3px;
+        }
+      }
+
+      a {
+        text-decoration: none;
+        color: $light-text-color;
+        transition: $default-transition;
+        display: inline-block;
+
+        &:hover {
+          color: $funky-accent-1;
+          transform: translateX(5px);
+        }
+      }
+
+      .item {
+        display: flex;
+        align-items: center;
+        gap: 0.75rem;
+        padding: 0.5rem 0;
+
+        .icon {
+          font-size: 1.5rem;
+          color: $funky-accent-2;
+          transition: $default-transition;
+        }
+
+        .icon__home {
+          font-size: 2rem;
+        }
+
+        &:hover .icon {
+          transform: rotate(15deg) scale(1.2);
+          color: $funky-accent-1;
+        }
+      }
+    }
+  }
+
+  .bottom {
+    text-align: center;
+    padding: 1.5rem;
+    background: rgba($dark-blue-accent, 0.2);
+    font-size: 0.9rem;
+    color: $light-text-color;
+    position: relative;
+
+    &::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 80%;
+      height: 1px;
+      background: $funky-gradient;
+    }
+  }
+}
+
+/* Animation */
+@keyframes funky-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.1); }
 }
