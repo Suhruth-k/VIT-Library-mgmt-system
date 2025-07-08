@@ -3,24 +3,21 @@ import { BiPhoneCall } from "react-icons/bi";
 import { AiOutlineClose, AiOutlineMail } from "react-icons/ai";
 import { BiLogOut } from "react-icons/bi";
 import { RiLockPasswordLine } from "react-icons/ri";
-import { FaRegUserCircle, FaRegMoon } from "react-icons/fa";
+import { FaRegUserCircle } from "react-icons/fa";
 import { GiBookAura } from "react-icons/gi";
 import { AiOutlineMenu } from "react-icons/ai";
-import { FiSun } from "react-icons/fi";
 import { NavLink, Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
-import { toggleTheme } from "../../../store/slices/themeSlice";
 import { useState } from "react";
 import { BASE_URL, logout } from "../../../http";
 import { setAuth } from "../../../store/slices/authSlice";
 import profileImage from "../../../assets/avatar.svg";
 
 const Header = () => {
-  const { theme } = useSelector((state) => state.theme);
   const auth = useSelector((state) => state.auth);
-  const dispatch = useDispatch();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState(false);
+  const dispatch = useDispatch();
 
   const handleLogout = async () => {
     try {
@@ -65,14 +62,6 @@ const Header = () => {
           </NavLink>
         </div>
         <div className="right">
-          <button
-            className="btn__icon text__color "
-            onClick={() => {
-              dispatch(toggleTheme());
-            }}
-          >
-            {theme === "dark" ? <FaRegMoon /> : <FiSun />}
-          </button>
           {auth?.isAuth ? (
             <div
               className="profile text__color"
@@ -86,7 +75,7 @@ const Header = () => {
                     ? `${BASE_URL}/${auth?.user.imagePath}`
                     : profileImage
                 }
-                alt="Profile Image"
+                alt="Profile"
               />
               <span className="name">{auth?.user?.name}</span>
 
@@ -139,14 +128,6 @@ const Header = () => {
         {/* MOBILE RIGHT */}
         <div className="mobile__right">
           <button
-            className="btn__icon text__color "
-            onClick={() => {
-              dispatch(toggleTheme());
-            }}
-          >
-            {theme === "dark" ? <FaRegMoon /> : <FiSun />}
-          </button>
-          <button
             className="btn__icon text__color"
             onClick={() => {
               setMobileMenuOpen(true);
@@ -162,7 +143,6 @@ const Header = () => {
             mobileMenuOpen && "mobile__nav__wrapper__active"
           }  bg `}
         >
-          {/* Close button */}
           <button className="btn__icon text__color btn__close">
             <AiOutlineClose
               className="icon"
@@ -174,45 +154,35 @@ const Header = () => {
           <nav>
             <Link
               to="/"
-              onClick={() => {
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => setMobileMenuOpen(false)}
               className="text__color "
             >
               Home
             </Link>
             <Link
               to="/books"
-              onClick={() => {
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => setMobileMenuOpen(false)}
               className="text__color "
             >
               Books
             </Link>
             <Link
               to="/ebooks"
-              onClick={() => {
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => setMobileMenuOpen(false)}
               className="text__color "
             >
               eBooks
             </Link>
             <Link
               to="/about-us"
-              onClick={() => {
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => setMobileMenuOpen(false)}
               className="text__color "
             >
               About Us
             </Link>
             <Link
               to="/contact-us"
-              onClick={() => {
-                setMobileMenuOpen(false);
-              }}
+              onClick={() => setMobileMenuOpen(false)}
               className="text__color "
             >
               Contact Us
