@@ -1,20 +1,11 @@
-import React from "react";
-import { MdCancel, MdDashboard, MdPendingActions } from "react-icons/md";
-import {
-  FaBook,
-  FaList,
-  FaLock,
-  FaUserAlt,
-  FaUsers,
-  FaBookOpen,
-} from "react-icons/fa";
-import { FcApproval } from "react-icons/fc";
+import React, { useState } from "react";
+import { MdDashboard } from "react-icons/md";
+import { FaBook, FaLock, FaUserAlt, FaUsers } from "react-icons/fa";
 import { BiCategoryAlt } from "react-icons/bi";
 import { SiBookstack } from "react-icons/si";
-import { useState } from "react";
 import { AppBar, SideBar } from "../../../components";
 import { Outlet } from "react-router-dom";
-import { AiFillBell, AiFillMessage } from "react-icons/ai";
+import { AiFillMessage } from "react-icons/ai";
 
 const menu = [
   {
@@ -55,7 +46,7 @@ const menu = [
         id: 4,
         text: "Renew Books",
         link: "manage-renew-requests",
-        icon: <FaBookOpen />,
+        icon: <FaBook />,
       },
     ],
   },
@@ -99,52 +90,8 @@ const menu = [
         link: "manage-books",
         icon: <FaBook />,
       },
-      {
-        id: 4,
-        text: "EBooks",
-        link: "manage-ebooks",
-        icon: <FaBook />,
-      },
-      {
-        id: 2,
-        text: "Categories",
-        link: "manage-categories",
-        icon: <BiCategoryAlt />,
-      },
-      {
-        id: 3,
-        text: "Almirahs",
-        link: "manage-almirahs",
-        icon: <FaList />,
-      },
     ],
   },
-  {
-    id: 6,
-    title: "Clearance Requests",
-    listItems: [
-      {
-        id: 1,
-        text: "Pending",
-        link: "manage-clearance-form/Pending",
-        icon: <MdPendingActions />,
-      },
-      {
-        id: 2,
-        text: "Approved",
-        link: "manage-clearance-form/Approved",
-        icon: <FcApproval />,
-      },
-
-      {
-        id: 3,
-        text: "Rejected",
-        link: "manage-clearance-form/Rejected",
-        icon: <MdCancel />,
-      },
-    ],
-  },
-
   {
     id: 7,
     title: "Account",
@@ -155,14 +102,12 @@ const menu = [
         link: "profile",
         icon: <FaUserAlt />,
       },
-
       {
-        id: 4,
+        id: 2,
         text: "Messages",
         link: "manage-messages",
         icon: <AiFillMessage />,
       },
-
       {
         id: 3,
         text: "Change Password",
