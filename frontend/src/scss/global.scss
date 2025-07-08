@@ -11,31 +11,25 @@
 body {
   font-family: "Poppins", sans-serif;
   // font-family: 'Roboto', sans-serif;
-
 }
 
 ::-webkit-scrollbar {
   width: 10px;
 }
 
-/* Track */
 ::-webkit-scrollbar-track {
   background: #e0e0e0;
 }
 
-/* Handle */
 ::-webkit-scrollbar-thumb {
   background: #888;
 }
 
-/* Handle on hover */
 ::-webkit-scrollbar-thumb:hover {
   background: #555;
 }
 
 /* UTILITY CLASSES */
-
-/* ###################### BUTTON  ######################*/
 
 .btn {
   border: none;
@@ -73,7 +67,6 @@ body {
 .light {
   .btn__secondary {
     background-color: $light-blue-accent;
-
     &:hover {
       color: white;
     }
@@ -87,11 +80,9 @@ body {
 .dark {
   .btn__secondary {
     background-color: $dark-blue-accent;
-
     &:hover {
       color: white;
     }
-
     &:disabled {
       cursor: not-allowed;
       opacity: 0.5;
@@ -101,7 +92,6 @@ body {
 
 /* ###################### FORM STYLING  ######################*/
 
-/* INPUT STYLING  */
 .form-control {
   display: flex;
   flex-direction: column;
@@ -117,7 +107,7 @@ body {
     &:focus {
       border: 2px solid $green-accent;
     }
-    &:disabled{
+    &:disabled {
       border: 2px solid $green-accent;
     }
   }
@@ -157,7 +147,6 @@ body {
       margin-left: -14px;
       background-color: $green-accent;
     }
-
     &:after {
       width: 100px;
       height: 1px;
@@ -188,12 +177,10 @@ body {
       text-align: center;
       margin-bottom: 15px;
     }
-
     form {
       display: flex;
       flex-direction: column;
       row-gap: 25px;
-
       .password__input {
         position: relative;
       }
@@ -204,7 +191,6 @@ body {
         cursor: pointer;
       }
     }
-
     .email__icon__box {
       font-size: 34px;
       text-align: center;
@@ -229,7 +215,7 @@ body {
   width: 100px;
 }
 
-.badge__sm{
+.badge__sm {
   width: 50px;
 }
 
@@ -267,7 +253,6 @@ body {
 .dashboard__layout {
   display: flex;
   width: 100%;
-
   .container {
     width: 100%;
   }
@@ -281,28 +266,21 @@ body {
   table {
     width: 100%;
     border: none;
-
-    @include lg{
+    @include lg {
       font-size: 12px;
     }
-
     @include md {
       font-size: 13px;
     }
-
     @include sm {
       font-size: 11px;
     }
-
     thead {
       color: white;
     }
-
     tr,
     td {
       padding: 13px;
-      // border: none;
-
       .avatar {
         width: 80px;
         height: 80px;
@@ -310,9 +288,8 @@ body {
         border-radius: 50%;
         overflow: hidden;
       }
-
-      .actions{
-          width: 180px;
+      .actions {
+        width: 180px;
       }
     }
   }
@@ -324,7 +301,6 @@ body {
       &:nth-child(even) {
         background-color: #101624;
       }
-
       &:hover {
         background-color: #0c101b;
       }
@@ -338,7 +314,6 @@ body {
       &:nth-child(even) {
         background-color: #ebe6e6;
       }
-
       &:hover {
         background-color: #e2e2e2;
       }
@@ -346,108 +321,85 @@ body {
   }
 }
 
-/* MANAGE SECTION  */
-
 .manage__section {
   .header {
     display: flex;
     justify-content: space-between;
     padding: 15px;
-
     @include md {
       flex-direction: column;
     }
-
     h2 {
       font-weight: 500;
       text-transform: uppercase;
     }
-
     button {
       margin: 0 5px;
-
       @include md {
         margin: 5px 0;
         margin-right: 6px;
       }
     }
   }
-
   .filter {
     display: flex;
     justify-content: space-around;
     padding: 10px;
     column-gap: 20px;
-
     @include md {
       flex-direction: column;
       row-gap: 20px;
     }
-
-    input,select{
+    input,
+    select {
       outline: none;
       border: 2px solid transparent;
       border-radius: 3px;
       padding: 8px 10px;
       width: 100%;
-
       &:focus {
         border: 2px solid $green-accent;
       }
     }
   }
-
   .table__wrapper {
     padding: 10px;
     table {
       width: 100%;
       min-width: 800px;
       border: none;
-
-      @include lg{
+      @include lg {
         font-size: 12px;
       }
-
       @include md {
         font-size: 13px;
       }
-  
       @include sm {
         font-size: 11px;
       }
-
-
       thead {
         color: white;
       }
-
       tr,
       td {
         padding: 13px;
-        // border: none;
-
         button {
           margin: 0 5px;
         }
       }
-
     }
   }
-
   .pagination {
     display: flex;
     justify-content: space-between;
     padding: 10px;
-
     @include md {
       flex-direction: column;
     }
-
     div {
       display: flex;
       align-items: center;
       column-gap: 10px;
-
       @include md {
         flex-direction: row;
         justify-content: flex-start;
@@ -466,22 +418,19 @@ body {
 
 .dark {
   a {
-    &:hover{
+    &:hover {
       color: $dark-text-color;
     }
   }
 }
 
-.star{
-  color: #FFD700;
+.star {
+  color: #ffd700;
   font-size: 20px;
   margin-left: 1px;
 }
 
-
-
-
-
+/* ✅ REPLACED FORM SECTION BELOW */
 .form {
   padding: 10px;
   span {
@@ -494,7 +443,8 @@ body {
     display: flex;
 
     form {
-        width: 100%;
+      width: 100%;
+
       .input__container {
         display: grid;
         grid-template-columns: 1fr 1fr;
@@ -515,60 +465,55 @@ body {
         @include sm {
           grid-template-columns: 1fr;
         }
-        
       }
-      .actions{
+
+      .actions {
         margin-top: 20px;
         width: 97.5%;
         display: flex;
         justify-content: end;
         column-gap: 14px;
 
-        @include md{
-            width: 95%;
+        @include md {
+          width: 95%;
         }
       }
     }
   }
 }
 
-
-.datalist__wrapper{
+.datalist__wrapper {
   min-height: calc(100vh - 100px);
   padding: 20px;
-
-  h2{
-      font-weight: 500;
-      font-size: 22px;
-      text-transform: uppercase;
+  h2 {
+    font-weight: 500;
+    font-size: 22px;
+    text-transform: uppercase;
   }
-  span{
-      font-size: 13px;
+  span {
+    font-size: 13px;
   }
 }
 
-.manage__clearance{
-  .card__section{
+.manage__clearance {
+  .card__section {
     padding: 20px;
-    h2{
+    h2 {
       font-weight: 500;
       text-transform: uppercase;
       margin-bottom: 10px;
     }
-    .card__wrapper{
+    .card__wrapper {
       display: grid;
-      grid-template-columns: repeat(3,1fr);
+      grid-template-columns: repeat(3, 1fr);
       gap: 20px;
       text-transform: uppercase;
-      a{
+      a {
         display: none;
       }
-  
-      @include sm{
-          grid-template-columns: repeat(1,1fr);
+      @include sm {
+        grid-template-columns: repeat(1, 1fr);
       }
+    }
   }
-  }
-
 }
-
