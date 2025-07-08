@@ -1,50 +1,128 @@
 @import "./variables.scss";
 
-.light {
-    .text__color {
-      color: $light-text-color;
-    }
-    .bg__accent {
-      background: $light-background-accent;
-    }
-    .bg {
-      background: #ffffff;
-    }
-    .bg__secondary {
-      background: $light-blue-accent;
-    }
+:root {
+  /* Funky Color Palette */
+  --funky-primary: #6d28d9;       /* Vibrant purple */
+  --funky-secondary: #ec4899;     /* Pink */
+  --funky-accent: #14b8a6;        /* Teal */
+  --funky-light: #faf5ff;         /* Light purple tint */
+  --funky-dark: #1e1b4b;          /* Deep navy */
+  --funky-success: #10b981;       /* Emerald */
+  --funky-warning: #f59e0b;       /* Amber */
+  --funky-danger: #ef4444;        /* Red */
+  --funky-text: #312e81;          /* Purple-gray */
+  --funky-text-light: #64748b;    /* Slate-500 */
+  --funky-border: #ddd6fe;        /* Light purple */
+  --funky-card-bg: #ffffff;
+  --funky-shadow: 0 4px 6px -1px rgba(109, 40, 217, 0.1);
   
-    .text__primary {
-      color: $green-accent;
-    }
-  
-    .bg__primary {
-      background: $green-accent;
-    }
-  }
-  
-  .dark {
-    .text__color {
-      color: $dark-text-color;
-    }
-    .bg__accent {
-      background: $dark-background-accent;
-    }
-    .bg {
-      background: $dark-background;
-    }
-    .bg__secondary {
-      background: $dark-blue-accent;
-    }
-  
-    .text__primary {
-      color: $green-accent;
-    }
-    .bg__primary {
-      background: $green-accent;
-    }
-  }
+  /* Dark Mode Colors */
+  --funky-dark-primary: #8b5cf6;
+  --funky-dark-secondary: #f472b6;
+  --funky-dark-accent: #2dd4bf;
+  --funky-dark-bg: #1e1b4b;
+  --funky-dark-card: #312e81;
+  --funky-dark-text: #e9d5ff;
+  --funky-dark-text-light: #a78bfa;
+  --funky-dark-border: #4c1d95;
+}
 
-  .text__danger{
-    color: $error-color;
+/* Light Theme */
+.light {
+  .text__color {
+    color: var(--funky-text);
   }
+  
+  .bg__accent {
+    background: var(--funky-light);
+  }
+  
+  .bg {
+    background: var(--funky-card-bg);
+  }
+  
+  .bg__secondary {
+    background: var(--funky-secondary);
+    color: white;
+  }
+  
+  .text__primary {
+    color: var(--funky-primary);
+  }
+  
+  .bg__primary {
+    background: var(--funky-primary);
+    color: white;
+  }
+  
+  .text__danger {
+    color: var(--funky-danger);
+  }
+}
+
+/* Dark Theme */
+.dark {
+  .text__color {
+    color: var(--funky-dark-text);
+  }
+  
+  .bg__accent {
+    background: var(--funky-dark-bg);
+  }
+  
+  .bg {
+    background: var(--funky-dark-card);
+  }
+  
+  .bg__secondary {
+    background: var(--funky-dark-secondary);
+    color: white;
+  }
+  
+  .text__primary {
+    color: var(--funky-dark-primary);
+  }
+  
+  .bg__primary {
+    background: var(--funky-dark-primary);
+    color: white;
+  }
+  
+  .text__danger {
+    color: #fca5a5; /* Lighter red for better visibility in dark mode */
+  }
+}
+
+/* Funky Utility Classes */
+.funky-border {
+  border: 2px dashed var(--funky-accent);
+  border-radius: 12px;
+}
+
+.funky-text {
+  background: linear-gradient(90deg, var(--funky-primary), var(--funky-secondary));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 700;
+}
+
+.funky-shadow {
+  box-shadow: 0 10px 15px -3px rgba(109, 40, 217, 0.3);
+}
+
+/* Animation Classes */
+@keyframes funky-pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+.funky-hover {
+  transition: all 0.3s ease;
+  
+  &:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 20px 25px -5px rgba(109, 40, 217, 0.2);
+    animation: funky-pulse 1s infinite;
+  }
+}
